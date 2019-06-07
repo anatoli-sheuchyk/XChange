@@ -1,8 +1,11 @@
 package org.knowm.xchange.bitstamp.service;
 
 import java.io.IOException;
+import java.util.function.Consumer;
+
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitstamp.BitstampAdapters;
+import org.knowm.xchange.bitstamp.dto.marketdata.BitstampTicker;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
@@ -19,7 +22,14 @@ public class BitstampMarketDataService extends BitstampMarketDataServiceRaw
 
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
-    return BitstampAdapters.adaptTicker(getBitstampTicker(currencyPair), currencyPair);
+    BitstampTicker bitstampTicker = getBitstampTicker(currencyPair);
+
+    return BitstampAdapters.adaptTicker(bitstampTicker, currencyPair);
+  }
+
+  @Override
+  public void onTickerEvent(CurrencyPair currencyPair, Consumer<Ticker> consumer, Object... args) throws IOException {
+    onBitstampTicker(currencyPair, consumer);
   }
 
   @Override

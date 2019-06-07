@@ -33,6 +33,7 @@ public class BitstampExchange extends BaseExchange implements Exchange {
     exchangeSpecification.setExchangeName("Bitstamp");
     exchangeSpecification.setExchangeDescription(
         "Bitstamp is a Bitcoin exchange registered in Slovenia.");
+    exchangeSpecification.setWsUri("wss://ws.bitstamp.net/");
     return exchangeSpecification;
   }
 

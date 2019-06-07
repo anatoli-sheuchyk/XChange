@@ -21,6 +21,7 @@ public class ExchangeSpecification {
   private String secretKey;
   private String apiKey;
   private String sslUri;
+  private String wsUri;
   private String plainTextUri;
   private String host;
   private int port = 80;
@@ -251,6 +252,14 @@ public class ExchangeSpecification {
   public String getSslUri() {
 
     return sslUri;
+  }
+
+  public String getWsUri() {
+    return wsUri;
+  }
+
+  public void setWsUri(String wsUri) {
+    this.wsUri = wsUri;
   }
 
   /**
